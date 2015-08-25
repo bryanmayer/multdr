@@ -24,8 +24,8 @@ run_sample_times_simulations =  function(nsims = 100, raw_exposure_data, raw_sam
   })
 
   simulations = plyr::ldply(1:nsims, function(i){
-    plyr::ldply(unique(raw_exposure_data$FamilyID), function(fid){
-      out = simulate_infection_sample_times(exposure_ts = subset(raw_exposure_data, FamilyID == fid),
+    plyr::ldply(unique(exposure_data$FamilyID), function(fid){
+      out = simulate_infection_sample_times(exposure_ts = subset(exposure_data, FamilyID == fid),
                                             sample_times = subset(raw_sample_times, FamilyID == fid)$days,
                                             hazard_risk = hazard_risk, clr = clr, lag = lag)
       out$FamilyID = fid

@@ -63,10 +63,12 @@ calc_risk = function(exposure, survival_time = Inf, hazard_risk, clr){
 #' 1-exp(-1e-9/1 * sum(exposures))
 #' @export
 #'
-calc_risk_mult = function(exposure_series, exposure_times, survival_time = Inf, hazard_risk, clr, na.zero = F){
+calc_risk_mult = function(exposure_series, exposure_times, survival_time = Inf, hazard_risk, clr, na.zero = F, log.surv = F){
   check_exposure_input(exposure_series, exposure_times)
   if(any(is.na(exposure_series)) & na.zero) exposure_series[which(is.na(exposure_series))] <- 0
-  1 - exp(- hazard_risk/clr * sum(exposure_series * (1 - exp(-clr * (survival_time - exposure_times)))))
+  cum_haz = - hazard_risk/clr * sum(exposure_series * (1 - exp(-clr * (survival_time - exposure_times))))
+  if(log.surv) {return(cum_haz)
+    }else return(1 - exp(- hazard_risk/clr * sum(exposure_series * (1 - exp(-clr * (survival_time - exposure_times)))))) #risk
 }
 
 
