@@ -1,0 +1,25 @@
+Package: multdr
+Type: Package
+Title: Simulating and fitting multiple exposure infectious disease dose-response models
+Version: 0.1
+Date: 2015-08-20
+Author@R: person("Bryan", "Mayer", email = "msubryan@gmail.com",
+          role = c("aut", "cre"))
+URL: https://github.com/bryanmayer/multdr
+Description: This package takes time series data with multiple quantified pathogen exposures and an infection time and analyzes the dose-response relationship.
+                Most simply, given a risk parameter, it can simulate infection times from the data.
+                It can fit the risk parameter from the data using two approachs: 1) a survival likelihood approach and 2) fitting to a Kaplan-Meier estimate from the data.
+                Outcomes can be plotted (e.g., KM) and evaluated for misclassification.
+License: What license is it under?
+LazyData: TRUE
+Imports:
+        plyr,
+        dplyr,
+    Rcpp (>= 0.11.0)
+Suggests:
+        doParallel,
+        survival,
+        ggplot2,
+        zoo,
+    testthat
+LinkingTo: Rcpp
