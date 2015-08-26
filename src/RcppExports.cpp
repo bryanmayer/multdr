@@ -35,16 +35,17 @@ BEGIN_RCPP
 END_RCPP
 }
 // simulate_infection_times_cpp
-double simulate_infection_times_cpp(NumericVector exposure_set, NumericVector time_set, double hazard_risk, double clr);
-RcppExport SEXP multdr_simulate_infection_times_cpp(SEXP exposure_setSEXP, SEXP time_setSEXP, SEXP hazard_riskSEXP, SEXP clrSEXP) {
+double simulate_infection_times_cpp(NumericVector exposure_set, NumericVector time_set, double lag, double hazard_risk, double clr);
+RcppExport SEXP multdr_simulate_infection_times_cpp(SEXP exposure_setSEXP, SEXP time_setSEXP, SEXP lagSEXP, SEXP hazard_riskSEXP, SEXP clrSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< NumericVector >::type exposure_set(exposure_setSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type time_set(time_setSEXP);
+    Rcpp::traits::input_parameter< double >::type lag(lagSEXP);
     Rcpp::traits::input_parameter< double >::type hazard_risk(hazard_riskSEXP);
     Rcpp::traits::input_parameter< double >::type clr(clrSEXP);
-    __result = Rcpp::wrap(simulate_infection_times_cpp(exposure_set, time_set, hazard_risk, clr));
+    __result = Rcpp::wrap(simulate_infection_times_cpp(exposure_set, time_set, lag, hazard_risk, clr));
     return __result;
 END_RCPP
 }

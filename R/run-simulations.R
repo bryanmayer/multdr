@@ -72,7 +72,7 @@ run_simulations = function(nsims = 100, raw_exposure_data, raw_sample_times, exp
 
     plyr::ldply(1:nsims, function(i){
       #this returns -1 if there isn't infection
-      infection_time = simulate_infection_times_cpp(exposure_set = exposures_in, time_set =  time_in,
+      infection_time = simulate_infection_times_cpp(exposure_set = exposures_in, time_set =  time_in, lag = lag,
                                                     hazard_risk = hazard_risk, clr = clr)
       detect_time =  if(infection_time < 0) {
         max(subset(raw_sample_times, FamilyID == fid)$days)

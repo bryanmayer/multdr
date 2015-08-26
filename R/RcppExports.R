@@ -14,7 +14,7 @@ calc_risk_mult_cpp <- function(exposure, start_time, final_day, hazard_risk, clr
 #'  This is a C++ version of the simulation function, that will replace the while loop in the simulation call
 #'  Assigning infection time to sample time is done later
 #'  @export
-simulate_infection_times_cpp <- function(exposure_set, time_set, hazard_risk, clr) {
-    .Call('multdr_simulate_infection_times_cpp', PACKAGE = 'multdr', exposure_set, time_set, hazard_risk, clr)
+simulate_infection_times_cpp <- function(exposure_set, time_set, lag, hazard_risk, clr) {
+    .Call('multdr_simulate_infection_times_cpp', PACKAGE = 'multdr', exposure_set, time_set, lag, hazard_risk, clr)
 }
 

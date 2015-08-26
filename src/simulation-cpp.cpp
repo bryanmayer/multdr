@@ -19,7 +19,7 @@ double calc_risk_mult_cpp(double exposure, double start_time, double final_day, 
 //'  @export
 // [[Rcpp::export]]
 double simulate_infection_times_cpp(NumericVector exposure_set, NumericVector time_set,
-                       double hazard_risk, double clr) {
+                       double lag, double hazard_risk, double clr) {
   double start_day;
   double end_day;
   double infection_time;
@@ -49,7 +49,7 @@ double simulate_infection_times_cpp(NumericVector exposure_set, NumericVector ti
   if(infection == 0){
     infection_time = -1;
   } else{
-    infection_time = time_set[t_index];
+    infection_time = time_set[t_index] + lag;
   }
   return infection_time;
 }
@@ -61,5 +61,5 @@ calc_current_exposure(1e7, 0, 5, 2)
 calc_current_exposure_cpp(1e7, 0, 5, clr = 2)
 calc_risk_mult(1e7, 0, 3, hazard_risk = 1e-9, clr = 1)
 calc_risk_mult_cpp(1e7, 0, 3, hazard_risk = 1e-9, clr = 1)
-simulate_infection_times_cpp(c(1e7, 1e9, 0), 0:3, hazard_risk = 1e-9, clr = 1)
+simulate_infection_times_cpp(c(1e7, 1e9, 0), 0:3, lag = 1, hazard_risk = 1e-9, clr = 1)
 */
